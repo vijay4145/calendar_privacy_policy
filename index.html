@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy | Sanatanam</title>
+    <style>
+      :root {
+        --color-primary: #8F4E00;
+        --color-saffron: #FF9933;
+        --color-vermilion: #A83900;
+        --color-gold: #D3AE36;
+        --color-bg: #FBF9F1;
+        --color-card: #FFFFFF;
+        --color-text-main: #1B1C17;
+        --color-text-muted: #554336;
+        --color-border: #E4E3DB;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 28px 18px;
+        background: linear-gradient(180deg, #fffaf2 0%, var(--color-bg) 100%);
+        color: var(--color-text-main);
+        font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.7;
+      }
+
+      .privacy-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(143, 78, 0, 0.08);
+        overflow: hidden;
+      }
+
+      .top-banner {
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-saffron) 100%);
+        padding: 22px 36px;
+        color: #fff;
+      }
+
+      .top-banner h1 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        letter-spacing: 0.02em;
+        color: #fff;
+        border: none;
+        padding: 0;
+      }
+
+      .top-banner .meta {
+        margin-top: 10px;
+        font-size: 0.97rem;
+        opacity: 0.95;
+      }
+
+      .content {
+        padding: 36px 34px 48px;
+      }
+
+      h2 {
+        color: var(--color-vermilion);
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.55rem;
+        border-left: 4px solid var(--color-saffron);
+        padding-left: 12px;
+      }
+
+      h3 {
+        color: var(--color-primary);
+        margin-top: 1.25rem;
+        font-size: 1.15rem;
+      }
+
+      p,
+      li {
+        color: var(--color-text-main);
+        font-size: 1rem;
+      }
+
+      p {
+        margin: 0.8rem 0;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.25rem;
+        margin: 0.75rem 0 1rem;
+      }
+
+      li + li {
+        margin-top: 0.45rem;
+      }
+
+      .muted {
+        color: var(--color-text-muted);
+      }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: underline;
+        transition: color 0.2s ease;
+      }
+
+      a:hover {
+        color: var(--color-vermilion);
+      }
+
+      .section-note {
+        background: #fffaf1;
+        border: 1px solid #f1e3c1;
+        border-left: 5px solid var(--color-gold);
+        padding: 14px 18px;
+        border-radius: 10px;
+        margin-top: 1rem;
+      }
+
+      .contact-box {
+        background: linear-gradient(180deg, #fffdf9 0%, #fff7ec 100%);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 18px 20px;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 18px 12px;
+        }
+
+        .top-banner,
+        .content {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="privacy-container">
+      <header class="top-banner">
+        <h1>Privacy Policy</h1>
+        <div class="meta">Sanatanam · Last Updated: October 7, 2026</div>
+      </header>
+
+      <main class="content">
+        <p>
+          <strong>Sanatanam</strong> ("we", "our", or "us") respects your privacy. This Privacy
+          Policy explains how we collect, use, and protect your information when you use our mobile
+          application <strong>Sanatanam</strong> (the "App").
+        </p>
+
+        <h2>1. Information We Collect</h2>
+
+        <h3>A. Location Data</h3>
+        <ul>
+          <li><strong>Permissions:</strong> ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION</li>
+          <li>
+            <strong>Purpose:</strong> We request location access to calculate precise,
+            location-specific Panchang details, Hindu calendar events, Sunrise/Sunset timings,
+            and Muhurtas based on your current geographical coordinates. Location data is not sold
+            or shared with third parties for marketing purposes.
+          </li>
+        </ul>
+
+        <h3>B. Personal &amp; Account Information</h3>
+        <ul>
+          <li>
+            <strong>Authentication:</strong> When you sign in using Google Sign-In or Firebase
+            Authentication, we collect basic profile information, including your
+            <strong>Name</strong>, <strong>Email Address</strong>, and <strong>Profile Picture</strong>.
+          </li>
+          <li>
+            <strong>Purpose:</strong> To manage your user profile, sync your preferences, and
+            maintain saved mantra counts or settings across devices.
+          </li>
+        </ul>
+
+        <h3>C. Device &amp; Usage Information</h3>
+        <ul>
+          <li>
+            <strong>Push Notifications:</strong> We collect Firebase Cloud Messaging (FCM)
+            registration tokens to deliver daily notifications, Panchang updates, and reminders.
+          </li>
+          <li>
+            <strong>Local Storage:</strong> Your app settings and offline preferences are securely
+            stored locally on your device using Room Database and encrypted storage.
+          </li>
+        </ul>
+
+        <h2>2. Third-Party Services</h2>
+        <p>
+          The App integrates trusted third-party services that may process data according to their
+          respective privacy policies:
+        </p>
+        <ul>
+          <li>
+            <strong>Google Play Services:</strong>
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          </li>
+          <li>
+            <strong>Firebase Authentication &amp; Messaging:</strong>
+            <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy &amp; Security</a>
+          </li>
+        </ul>
+
+        <h2>3. Data Retention and Account Deletion</h2>
+        <p>
+          We retain your personal data for as long as your account remains active.
+        </p>
+
+        <h3>How to Request Data / Account Deletion</h3>
+        <ol>
+          <li>
+            Sending an email to <strong>hunternineone@gmail.com</strong> with the subject line
+            <strong>"Account Deletion Request"</strong>.
+          </li>
+          <li>Including your registered email address.</li>
+        </ol>
+
+        <p>
+          Upon request, we will permanently delete your account details and stored cloud preferences
+          within 30 days.
+        </p>
+
+        <h2>4. Children’s Privacy</h2>
+        <p>
+          Sanatanam does not knowingly collect personal information from children under the age of
+          13. If you believe a child has provided us with personal data, please contact us so we
+          can immediately delete the information.
+        </p>
+
+        <h2>5. Security</h2>
+        <p>
+          We take reasonable technical and organizational precautions (including HTTPS encryption
+          and secure database controls) to prevent the loss, misuse, or alteration of your personal
+          data.
+        </p>
+
+        <h2>6. Changes to This Privacy Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. Any changes will be posted on this
+          page with an updated "Last Updated" date.
+        </p>
+
+        <h2>7. Contact Us</h2>
+        <div class="contact-box">
+          <p>If you have any questions or suggestions regarding this Privacy Policy, please contact us at:</p>
+          <p><strong>Email:</strong> hunternineone@gmail.com</p>
+          <p><strong>Developer Name:</strong> Sanatanam Team</p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
