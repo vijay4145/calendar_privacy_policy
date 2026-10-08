@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sign in with Google to permanently delete your Sanatanam account and personal data."
+    />
+    <title>Delete Account | Sanatanam</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --color-primary: #8f4e00;
+        --color-saffron: #ff9933;
+        --color-vermilion: #a83900;
+        --color-gold: #d3ae36;
+        --color-bg: #fbf9f1;
+        --color-card: #fff;
+        --color-text: #1b1c17;
+        --color-muted: #554336;
+        --color-border: #e4e3db;
+        --color-green: #16803c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 28px 18px;
+        background:
+          radial-gradient(ellipse at 80% 5%, rgba(255, 153, 51, 0.16), transparent 34rem),
+          linear-gradient(180deg, #fffaf2 0%, var(--color-bg) 100%);
+        color: var(--color-text);
+        font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.65;
+      }
+
+      .page {
+        max-width: 820px;
+        margin: 0 auto;
+        overflow: hidden;
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: 22px;
+        box-shadow: 0 18px 55px rgba(143, 78, 0, 0.12);
+        animation: rise-in 650ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+      }
+
+      .banner {
+        position: relative;
+        overflow: hidden;
+        padding: 30px clamp(22px, 6vw, 52px);
+        color: #fff;
+        background: linear-gradient(130deg, var(--color-primary), var(--color-saffron));
+      }
+
+      .banner::after {
+        position: absolute;
+        right: -48px;
+        bottom: -114px;
+        width: 260px;
+        height: 260px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 50%;
+        box-shadow: 0 0 0 24px rgba(255, 255, 255, 0.07), 0 0 0 52px rgba(255, 255, 255, 0.05);
+        content: "";
+        pointer-events: none;
+      }
+
+      .brand {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 8px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 2.75rem);
+        letter-spacing: -0.035em;
+        line-height: 1.15;
+      }
+
+      .banner p {
+        position: relative;
+        z-index: 1;
+        max-width: 590px;
+        margin: 12px 0 0;
+        color: rgba(255, 255, 255, 0.94);
+      }
+
+      main {
+        padding: 30px clamp(22px, 6vw, 52px) 42px;
+      }
+
+      .notice {
+        display: flex;
+        gap: 13px;
+        align-items: flex-start;
+        padding: 17px 18px;
+        border: 1px solid #f1e3c1;
+        border-left: 5px solid var(--color-gold);
+        border-radius: 12px;
+        background: #fffaf1;
+      }
+
+      .notice-icon {
+        display: grid;
+        flex: 0 0 27px;
+        width: 27px;
+        height: 27px;
+        place-items: center;
+        border-radius: 50%;
+        background: #ffedc8;
+        color: var(--color-primary);
+        font-weight: 800;
+      }
+
+      .notice p {
+        margin: 0;
+      }
+
+      .notice strong {
+        color: var(--color-vermilion);
+      }
+
+      h2 {
+        margin: 30px 0 16px;
+        color: var(--color-vermilion);
+        font-size: 1.35rem;
+      }
+
+      .steps {
+        display: grid;
+        gap: 14px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 15px;
+        align-items: start;
+        padding: 18px;
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+        background: linear-gradient(180deg, #fff 0%, #fffdf9 100%);
+        transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+      }
+
+      .step:focus-within {
+        border-color: rgba(143, 78, 0, 0.48);
+        box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.13);
+      }
+
+      .step-number {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 50%;
+        background: #fff0dc;
+        color: var(--color-primary);
+        font-weight: 800;
+      }
+
+      .step-number.complete {
+        background: #e6f6eb;
+        color: var(--color-green);
+        animation: check-pop 320ms ease-out both;
+      }
+
+      .step-body h3 {
+        margin: 2px 0 4px;
+        color: var(--color-primary);
+        font-size: 1.08rem;
+      }
+
+      .step-body p {
+        margin: 0 0 14px;
+        color: var(--color-muted);
+        font-size: 0.96rem;
+      }
+
+      .identity {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 12px;
+        color: var(--color-green);
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      .identity.visible {
+        display: flex;
+        animation: fade-in 250ms ease-out both;
+      }
+
+      .identity svg {
+        flex: 0 0 19px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 17px;
+        border: 1px solid transparent;
+        border-radius: 9px;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      .button:not(:disabled):hover {
+        transform: translateY(-1px);
+        box-shadow: 0 7px 16px rgba(27, 28, 23, 0.13);
+      }
+
+      .button:focus-visible,
+      a:focus-visible,
+      input:focus-visible {
+        outline: 3px solid rgba(211, 174, 54, 0.7);
+        outline-offset: 3px;
+      }
+
+      .button:disabled {
+        cursor: not-allowed;
+        opacity: 0.56;
+      }
+
+      .google-button {
+        border-color: #dadce0;
+        background: #fff;
+        color: #3c4043;
+      }
+
+      .google-button:not(:disabled):hover {
+        background: #f8f9fa;
+      }
+
+      .google-mark {
+        width: 19px;
+        height: 19px;
+      }
+
+      .danger-button {
+        background: var(--color-vermilion);
+        color: #fff;
+      }
+
+      .danger-button:not(:disabled):hover {
+        background: #862d00;
+      }
+
+      .confirm {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin: 8px 0 16px;
+        color: var(--color-text);
+        font-size: 0.95rem;
+      }
+
+      .confirm input {
+        flex: 0 0 18px;
+        width: 18px;
+        height: 18px;
+        margin: 4px 0 0;
+        accent-color: var(--color-vermilion);
+      }
+
+      .status {
+        min-height: 1.5em;
+        margin: 12px 0 0;
+        color: var(--color-muted);
+        font-size: 0.94rem;
+      }
+
+      .status.error {
+        color: #a12618;
+      }
+
+      .success-panel {
+        display: none;
+        margin-top: 20px;
+        padding: 18px;
+        border: 1px solid #a9ddb8;
+        border-radius: 12px;
+        background: #effaf2;
+        color: #145c2e;
+      }
+
+      .success-panel.visible {
+        display: block;
+        animation: rise-in 350ms ease-out both;
+      }
+
+      .success-panel h2 {
+        margin: 0 0 5px;
+        color: #145c2e;
+      }
+
+      .success-panel p {
+        margin: 0;
+      }
+
+      .footer-link {
+        margin: 27px 0 0;
+        color: var(--color-muted);
+        font-size: 0.92rem;
+      }
+
+      a {
+        color: var(--color-primary);
+        text-underline-offset: 3px;
+      }
+
+      a:hover {
+        color: var(--color-vermilion);
+      }
+
+      @keyframes rise-in {
+        from { opacity: 0; transform: translateY(13px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes check-pop {
+        0% { transform: scale(0.78); }
+        70% { transform: scale(1.12); }
+        100% { transform: scale(1); }
+      }
+
+      @media (max-width: 520px) {
+        body { padding: 14px 10px; }
+        .page { border-radius: 16px; }
+        .banner { padding-top: 25px; padding-bottom: 25px; }
+        main { padding-top: 23px; padding-bottom: 30px; }
+        .step { grid-template-columns: 34px 1fr; gap: 11px; padding: 15px 13px; }
+        .step-number { width: 32px; height: 32px; }
+        .button { width: 100%; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="banner">
+        <p class="brand">Sanatanam</p>
+        <h1>Delete your account</h1>
+        <p>Securely remove your account and the personal records you have created in Sanatanam.</p>
+      </header>
+
+      <main>
+        <section class="notice" aria-label="Deletion details">
+          <span class="notice-icon" aria-hidden="true">!</span>
+          <p>
+            <strong>This action is permanent.</strong>
+            Any personal data or records you enter in Sanatanam that are stored on our
+            servers—including your account profile, conversations, and messages—will be deleted.
+            Data kept only on your device is not removed remotely; clear the app's storage or
+            uninstall Sanatanam to remove it.
+          </p>
+        </section>
+
+        <h2>How to delete your account</h2>
+        <div class="steps">
+          <section class="step" aria-labelledby="signin-title">
+            <span class="step-number" id="signin-step-number" aria-hidden="true">1</span>
+            <div class="step-body">
+              <h3 id="signin-title">Verify with Google</h3>
+              <p>Sign in with the Google account associated with your Sanatanam account.</p>
+              <div class="identity" id="identity" aria-live="polite">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="11" fill="#16803c" />
+                  <path d="m7 12.2 3.1 3.1L17.4 8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" />
+                </svg>
+                <span id="identity-label"></span>
+              </div>
+              <button class="button google-button" id="signin-button" type="button">
+                <svg class="google-mark" viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z" transform="translate(0 4)" />
+                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.25 5.48-4.74 7.18l7.7 5.98c4.5-4.15 7.08-10.27 7.08-17.63Z" transform="translate(0 -3)" />
+                  <path fill="#FBBC05" d="M10.53 28.59a14.4 14.4 0 0 1 0-9.18l-7.98-6.19a23.94 23.94 0 0 0 0 21.56l7.98-6.19Z" transform="translate(0 4)" />
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.82l-7.7-5.98c-2.14 1.44-4.89 2.3-8.2 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z" transform="translate(0 -4)" />
+                </svg>
+                <span>Continue with Google</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="step" aria-labelledby="delete-title">
+            <span class="step-number" aria-hidden="true">2</span>
+            <div class="step-body">
+              <h3 id="delete-title">Confirm permanent deletion</h3>
+              <p>After verification, confirm below to delete your account and server-stored data.</p>
+              <label class="confirm">
+                <input id="confirm-checkbox" type="checkbox" disabled />
+                <span>I understand that my Sanatanam account and its server-stored personal data and records will be permanently deleted.</span>
+              </label>
+              <button class="button danger-button" id="delete-button" type="button" disabled>
+                Delete my account and data
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite">
+          Sign in with Google to continue. No data is deleted until you confirm.
+        </p>
+        <section class="success-panel" id="success-panel" aria-live="polite">
+          <h2>Account and data deleted</h2>
+          <p>Your Sanatanam account and associated server-stored personal data and records have been permanently deleted.</p>
+        </section>
+        <p class="footer-link">
+          Questions? <a href="mailto:hunternineone@gmail.com">Contact the Sanatanam team</a>
+          · <a href="./index.html">Privacy Policy</a>
+        </p>
+      </main>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+      import {
+        GoogleAuthProvider,
+        getAuth,
+        getRedirectResult,
+        reauthenticateWithPopup,
+        signInWithPopup,
+        signInWithRedirect
+      } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+      const firebaseConfig = {
+  apiKey: "AIzaSyD7yP4dAhGwb3btU8igdGzq4Xic09BRSlY",
+  authDomain: "sanatanam-3e510.firebaseapp.com",
+  projectId: "sanatanam-3e510",
+  storageBucket: "sanatanam-3e510.firebasestorage.app",
+  messagingSenderId: "558651331221",
+  appId: "1:558651331221:web:14fdce2a7d8df5bc56c19c",
+  measurementId: "G-7Y1XPTZC9K"
+};
+      const deletionEndpoint = "https://religious-calendar-server.onrender.com/api/v1/user";
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const googleProvider = new GoogleAuthProvider();
+      googleProvider.setCustomParameters({ prompt: "select_account" });
+
+      const signInButton = document.getElementById("signin-button");
+      const deleteButton = document.getElementById("delete-button");
+      const confirmCheckbox = document.getElementById("confirm-checkbox");
+      const status = document.getElementById("status");
+      const identity = document.getElementById("identity");
+      const identityLabel = document.getElementById("identity-label");
+      const signInStepNumber = document.getElementById("signin-step-number");
+      const successPanel = document.getElementById("success-panel");
+      let verifiedUser = null;
+      let isDeleting = false;
+      let isRedirecting = false;
+
+      function setStatus(message, isError = false) {
+        status.textContent = message;
+        status.classList.toggle("error", isError);
+      }
+
+      function completeSignIn(user) {
+        verifiedUser = user;
+        identityLabel.textContent = `Verified as ${user.email || "your Google account"}`;
+        identity.classList.add("visible");
+        signInStepNumber.classList.add("complete");
+        signInStepNumber.textContent = "✓";
+        confirmCheckbox.disabled = false;
+        deleteButton.disabled = !confirmCheckbox.checked;
+        signInButton.querySelector("span").textContent = "Google account verified";
+        signInButton.disabled = true;
+        setStatus("Google sign-in complete. Review the deletion notice and confirm to continue.");
+      }
+
+      function describeSignInError(error) {
+        const code = error?.code || "unknown";
+        if (code === "auth/unauthorized-domain") {
+          return "This website is not authorized for Google sign-in. Add its exact domain under Firebase Authentication → Settings → Authorized domains.";
+        }
+        if (code === "auth/operation-not-allowed") {
+          return "Google sign-in is not enabled for this Firebase project. Enable the Google provider in Firebase Authentication.";
+        }
+        if (code === "auth/popup-closed-by-user") {
+          return "The Google sign-in window closed before verification finished. Please try again and keep it open until you return to this page.";
+        }
+        return `Google sign-in failed (${code}). Please try again. If it continues, check Firebase Authentication's authorized domains and Google provider settings.`;
+      }
+
+      getRedirectResult(auth)
+        .then((result) => {
+          if (result?.user) {
+            completeSignIn(result.user);
+          }
+        })
+        .catch((error) => {
+          setStatus(describeSignInError(error), true);
+        });
+
+      signInButton.addEventListener("click", async () => {
+        if (location.protocol !== "https:" && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+          setStatus("Google sign-in requires a secure HTTPS website. Open the published HTTPS account-deletion page.", true);
+          return;
+        }
+
+        signInButton.disabled = true;
+        setStatus("Opening Google sign-in…");
+        try {
+          const result = auth.currentUser
+            ? await reauthenticateWithPopup(auth.currentUser, googleProvider)
+            : await signInWithPopup(auth, googleProvider);
+          completeSignIn(result.user);
+        } catch (error) {
+          if (
+            !isRedirecting &&
+            ["auth/popup-blocked", "auth/popup-closed-by-user", "auth/operation-not-supported-in-this-environment"]
+              .includes(error?.code)
+          ) {
+            isRedirecting = true;
+            setStatus("The sign-in window could not finish. Continuing with Google sign-in…");
+            try {
+              signInButton.disabled = true;
+              await signInWithRedirect(auth, googleProvider);
+              return;
+            } catch (redirectError) {
+              setStatus(describeSignInError(redirectError), true);
+              isRedirecting = false;
+            }
+          }
+          if (!isRedirecting) {
+            setStatus(describeSignInError(error), true);
+          }
+        } finally {
+          if (!verifiedUser && !isRedirecting) {
+            signInButton.disabled = false;
+          }
+        }
+      });
+
+      confirmCheckbox.addEventListener("change", () => {
+        deleteButton.disabled = !verifiedUser || !confirmCheckbox.checked || isDeleting;
+      });
+
+      deleteButton.addEventListener("click", async () => {
+        if (!verifiedUser || !confirmCheckbox.checked || isDeleting) {
+          return;
+        }
+        isDeleting = true;
+        deleteButton.disabled = true;
+        signInButton.disabled = true;
+        setStatus("Deleting your account and server-stored data…");
+
+        try {
+          const idToken = await verifiedUser.getIdToken(true);
+          const response = await fetch(deletionEndpoint, {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+              Accept: "application/json"
+            }
+          });
+          if (!response.ok) {
+            throw new Error(`Deletion request failed with status ${response.status}`);
+          }
+
+          verifiedUser = null;
+          successPanel.classList.add("visible");
+          setStatus("Deletion completed.");
+        } catch (error) {
+          setStatus(
+            "We could not confirm deletion. Your request may not have completed; please try again or contact hunternineone@gmail.com.",
+            true
+          );
+        } finally {
+          isDeleting = false;
+          if (verifiedUser) {
+            signInButton.disabled = true;
+            deleteButton.disabled = !confirmCheckbox.checked;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
